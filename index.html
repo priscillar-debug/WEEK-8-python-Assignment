@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Chronicles</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      background-color: #ffffff;
+    }
+
+    section {
+      background-color: #e6f0ff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #2575fc;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #1a5edb;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: auto;
+    }
+
+    #formMessage {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Code Chronicles</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" onclick="navigate('home')">Home</a></li>
+        <li><a href="#about" onclick="navigate('about')">About</a></li>
+        <li><a href="#contact" onclick="navigate('contact')">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="homeSection">
+      <article>
+        <h2>Welcome to Code Chronicles</h2>
+        <p>Explore the world of web development! This blog is your guide through HTML, CSS, JavaScript, and responsive design. Stay tuned for interactive content and useful tips.</p>
+      </article>
+    </section>
+
+    <!-- About Section -->
+    <section id="aboutSection" style="display: none;">
+      <h2>About Me</h2>
+      <p>Hey! I'm a passionate web developer on a journey to build creative and user-friendly websites. This blog showcases my learning and growth through fun projects.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contactSection" style="display: none;">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <button type="submit">Submit</button>
+      </form>
+      <p id="formMessage"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Code Chronicles | Designed with ❤️</p>
+  </footer>
+
+  <script>
+    // Navigation between sections
+    function navigate(section) {
+      document.getElementById("homeSection").style.display = "none";
+      document.getElementById("aboutSection").style.display = "none";
+      document.getElementById("contactSection").style.display = "none";
+
+      document.getElementById(section + "Section").style.display = "block";
+    }
+
+    // JavaScript form validation
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const message = document.getElementById("formMessage");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (name && email.includes("@")) {
+          message.textContent = "Thank you for contacting us!";
+          message.style.color = "green";
+        } else {
+          message.textContent = "Please enter valid details.";
+          message.style.color = "red";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
